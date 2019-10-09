@@ -2,7 +2,7 @@
 
 This script is using OpenCV in python for **backward/forward** video feature.
 
-If you wish to modify something in the player (i.e buffer time), please edit the setted variables in **line 20 to 80**.
+If you wish to modify something in the player (i.e buffer time), please edit the setted variables in **CONFIGURATION**.
 
 ## Summary
 1. Installation
@@ -10,6 +10,7 @@ If you wish to modify something in the player (i.e buffer time), please edit the
     2. Command lines
         1. Install Dependencies
         2. Start player
+        3. Create an exportable exec file
 2. How to use
 3. Known Bugs
 
@@ -32,8 +33,15 @@ If you wish to modify something in the player (i.e buffer time), please edit the
         ```
 
     2. Start player
-        ```bash
+        ```shell
         python openCV-player.py "{VIDEO PATH}"
+        ```
+
+    3. Create an exportable exec file
+        You can create an exportable file to use the script without the need of installing the dependencies by using [pyinstaller](https://pyinstaller.readthedocs.io/en/stable/installation.html):
+        ```shell
+        # --path is used to get your virtualenv librairies
+        pyinstaller --onefile --paths ./venv/lib/python3.7/site-packages/ openCV-player.py
         ```
 
 ## 2. How to use

@@ -3,13 +3,22 @@ import cv2
 import time
 import utils as u
 import sys
+import os
 
 from tkinter import Tk
 
 # Checking if we can open the linked file
+if len(sys.argv) > 1:
+    videoInput = sys.argv[1]
+else:
+    videoInput = input('Please enter video path: ')
+
 try:
-    if sys.argv[1]:
-        videoPath = sys.argv[1]
+    if 'http' in videoInput:
+        videoPath = videoInput
+    else:
+        if open(videoInput):
+            videoPath = videoInput
 except IOError:
     raise IOError(
         'Please enter a valid path. Use "" if you have spaces in the path.')
@@ -17,7 +26,8 @@ except IOError:
 cap = cv2.VideoCapture(videoPath)
 
 
-######### PLAYER CONFIG #########
+######### CONFIGURATION #########
+######### PLAYER #########
 # Get screen width
 screenWidth = u.getScreenSize()['screenWidth']
 # Get screen height
@@ -51,9 +61,9 @@ videoWindowName = 'Video'
 controlsWindowName = 'Controls'
 frameNumberTrackbarName = 'Frame Number'
 framerateTrackbarName = 'Frame Rate'
-######### !PLAYER CONFIG #########
+######### !PLAYER #########
 
-######### COMMANDS CONFIG #########
+######### COMMANDS #########
 playCommand = 'play'
 pauseCommand = 'pause'
 prevFrameCommand = 'prev_frame'
@@ -77,7 +87,8 @@ videoStatus = {
     -1: status,                 # If no key is pressed, get the previous status
     27: exitCommand             # Esc
 }
-######### !COMMANDS CONFIG #########
+######### !COMMANDS #########
+######### !CONFIGURATION #########
 
 
 # Start time (ms)

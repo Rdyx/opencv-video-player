@@ -7,10 +7,12 @@
 ehthumbs.db
 Thumbs.db
 
-# Files
+# Folders
 .vscode/
 __pycache__/
 venv/
+dist/
+build/
 
 # Formats
 *.pyc
@@ -27,3 +29,4 @@ venv/
 *.swf
 *.vob
 *.wmv
+*.spec
