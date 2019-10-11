@@ -34,7 +34,8 @@ If you wish to modify something in the player (i.e buffer time), please edit the
 
     2. Start player
         ```shell
-        python openCV-player.py "{VIDEO PATH}"
+        # You can directly set a start at a given time (seconds only)
+        python openCV-player.py "{VIDEO PATH}" {WANTED START FRAME}
         ```
 
     3. Create an exportable exec file

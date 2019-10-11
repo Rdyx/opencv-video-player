@@ -44,8 +44,6 @@ maxFrames = 90 + 1
 totalFrames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
 # Seconds to ignore when clicking on bar, too low value would make the player slow
 secondsToIgnore = 3
-# Start time (s)
-startTime = 0
 # Create Controls window content
 Controls = np.zeros((50, 750), np.uint8)
 # Set Controls window text
@@ -91,8 +89,12 @@ videoStatus = {
 ######### !CONFIGURATION #########
 
 
-# Start time (ms)
-cap.set(cv2.CAP_PROP_POS_MSEC, startTime*1000)
+# A float|int after path is used as video start time (in seconds only)
+if sysArgvLength == 3:
+    startTime = float(sys.argv[2])
+    startFrame = startTime*frameRate
+
+    cap.set(cv2.CAP_PROP_POS_FRAMES, startFrame)
 
 # Create Controls window
 u.setWindow(
