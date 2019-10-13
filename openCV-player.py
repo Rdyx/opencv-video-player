@@ -7,8 +7,10 @@ import os
 
 from tkinter import Tk
 
+sysArgvLength = len(sys.argv)
+
 # Checking if we can open the linked file
-if len(sys.argv) > 1:
+if sysArgvLength > 1:
     videoInput = sys.argv[1]
 else:
     videoInput = input('Please enter video path: ')
